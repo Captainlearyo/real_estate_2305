@@ -40,6 +40,55 @@ RSpec.describe House do
       expect(house_2.above_market_average?).to be true
     end
 
+    it "rooms_from_category " do
+
+      house = House.new("$400000", "123 sugar lane")
+      room_1 = Room.new(:bedroom, 10, '13')
+      room_2 = Room.new(:bedroom, 11, '15') 
+      room_3 = Room.new(:living_room, 25, '15')
+      room_4 = Room.new(:basement, 30, '41')
+
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4)
+
+     expect(house.rooms_from_category(:bedroom)).to eq([room_1, room_2])
+     expect(house.rooms_from_category(:basement)).to eq([room_4])
+    end
+
+    it "house.area" do
+
+      house = House.new("$400000", "123 sugar lane")
+      room_1 = Room.new(:bedroom, 10, '13')
+      room_2 = Room.new(:bedroom, 11, '15') 
+      room_3 = Room.new(:living_room, 25, '15')
+      room_4 = Room.new(:basement, 30, '41')
+
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4)
+
+     expect(house.area).to eq (1900)
+    end
+
+    it "house.details" do
+
+      house = House.new("$400000", "123 sugar lane")
+      room_1 = Room.new(:bedroom, 10, '13')
+      room_2 = Room.new(:bedroom, 11, '15') 
+      room_3 = Room.new(:living_room, 25, '15')
+      room_4 = Room.new(:basement, 30, '41')
+
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4)
+
+     expect(house.details).to eq ({"price" => 400000, "address" => "123 sugar lane"})
+    end
+
 
   
   end
