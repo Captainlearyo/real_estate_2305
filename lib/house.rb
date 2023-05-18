@@ -29,5 +29,10 @@ class House
 			 def area
 				@rooms.reduce(0){ |sum, i| sum + i.area }
 			 end
+
+			 def price_per_square_foot
+				price = @price.delete("$").to_i 
+				(price / area).round(2)
+			 end
    
    end
