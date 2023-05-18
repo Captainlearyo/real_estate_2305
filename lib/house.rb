@@ -32,7 +32,7 @@ class House
 
 			 def price_per_square_foot
 				price = @price.delete("$").to_i 
-				(price / area).round(2)
+				(price/area.to_f).round(2)
 			 end
    
    end
